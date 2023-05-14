@@ -10,6 +10,7 @@ namespace PlayerSystem
     {
         [SerializeField] private float playerMovementSpeed = 2.5f;
         [SerializeField] private Animator playerAnimator;
+        [SerializeField] private Transform playerMainBody;
         public delegate void OnPlayerFall();
         public OnPlayerFall PlayerFell;
         public bool isFinished;
@@ -54,23 +55,25 @@ namespace PlayerSystem
 
         public void RestartPlayerProperties()
         {
-            var transform1 = transform;
-            transform1.position = Vector3.zero;
-            transform1.localRotation = Quaternion.identity;
-            var rigidbodyComponent = GetComponent<Rigidbody>();
-            rigidbodyComponent.angularVelocity=Vector3.zero;
-            rigidbodyComponent.velocity=Vector3.zero;
+            ResetPlayerProperties();
+            transform.position = Vector3.zero;
         }
 
         public void NewGame()
         {
             playerAnimator.Play("Run");
+            ResetPlayerProperties();
+            transform.position += Vector3.forward * .5f;
+        }
+
+        private void ResetPlayerProperties()
+        {
             var transform1 = transform;
-            transform1.position += Vector3.forward*.5f;
             transform1.localRotation = Quaternion.identity;
             var rigidbodyComponent = GetComponent<Rigidbody>();
             rigidbodyComponent.angularVelocity=Vector3.zero;
             rigidbodyComponent.velocity=Vector3.zero;
+            playerMainBody.localEulerAngles = Vector3.zero;
         }
         
         private void Update()

@@ -2242,6 +2242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovementSpeed: 1.75
   playerAnimator: {fileID: 5062883109654775314}
+  playerMainBody: {fileID: 5062883109654775313}
   isFinished: 0
 --- !u!1 &604831775
 GameObject:
