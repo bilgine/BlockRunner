@@ -4,6 +4,8 @@ namespace InputSystem
     {
         public void ClickInput();   
         
+        public void SpaceInput();
+        
     
     }
 }

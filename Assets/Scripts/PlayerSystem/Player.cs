@@ -1,11 +1,8 @@
-using System;
 using DG.Tweening;
 using EndGamePanelSystem;
 using ServiceLocatorSystem;
 using StackSpawnerSystem;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace PlayerSystem
 {

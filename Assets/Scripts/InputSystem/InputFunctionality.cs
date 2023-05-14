@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using EndGamePanelSystem;
 using PlayerSystem;
 using ServiceLocatorSystem;
@@ -51,7 +50,7 @@ namespace InputSystem
             _endGamePanelController.DestroyEndGamePanel();
             NormalStack lastStack = (NormalStack)_stackListManager.GetLastStack();
             lastStack.gameObject.SetActive(true);
-            _finishStatusManager.AddFinishPosition(Vector3.forward * 15f * Random.Range(1, 4));
+            _finishStatusManager.AddFinishPosition(Vector3.forward * (15f * Random.Range(1, 4)));
             _stackSpawner.SpawnStack();
             _player.NewGame();
             _soundManager.ResetSound();
