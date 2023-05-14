@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using EndGamePanelSystem;
 using ServiceLocatorSystem;
 using StackSpawnerSystem;
 using UnityEngine;
@@ -16,10 +17,12 @@ namespace PlayerSystem
         public OnPlayerFall PlayerFell;
         public bool isFinished;
         private FinishStatusManager _finishStatusManager;
+        private EndGamePanelController _endGamePanelController;
 
         public void Start()
         {
             _finishStatusManager = ContainerManager.GetContainer(Container.Game).ServiceLocator.Resolve<FinishStatusManager>();
+            _endGamePanelController = ContainerManager.GetContainer(Container.Game).ServiceLocator.Resolve<EndGamePanelController>();
         }
 
         public void PlayerStartMovement()
@@ -82,6 +85,7 @@ namespace PlayerSystem
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject != _finishStatusManager.FinishObject) return;
+            _endGamePanelController.InstantiateEndGamePanel();
             isFinished= true;
             PlayerDance();
         }
